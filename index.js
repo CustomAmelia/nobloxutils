@@ -35,9 +35,9 @@ function startApp() {
 	console.log(chalk.green(getfriends));
 	const declinefriends = "4. Decline Friend Requests"
 	console.log(chalk.green(declinefriends));
-    const getoutfits = "5. Get Outfits"
+	const getoutfits = "5. Get Outfits"
 	console.log(chalk.green(getoutfits));
-    const getOutfitdetails = "6. Get Outfit Details"
+	const getOutfitdetails = "6. Get Outfit Details"
 	console.log(chalk.green(getOutfitdetails));
 
 	const action = 'Enter the number of the action you want to perform: '
@@ -49,9 +49,9 @@ function startApp() {
 					const getGroupDetails = require(path.join(utilsPath, 'getgroup.js'));
 					getGroupDetails(groupId)
 						.then(() => {
-							setTimeout(function() {
-								rl.close();
-							}, 6000);
+							rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+								startApp();
+							});
 						})
 						.catch((err) => {
 							console.error("Unexpected Error Occured. Is the Group ID Valid?");
@@ -72,9 +72,9 @@ function startApp() {
 						const getCollectibles = require(path.join(utilsPath, 'getcollectibles.js'));
 						getCollectibles(userid, limit) // Pass the limit to the function
 							.then(() => {
-								setTimeout(function() {
-									rl.close();
-								}, 6000);
+								rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+									startApp();
+								});
 							})
 							.catch((err) => {
 								console.error("Unexpected Error Occured. Is the User ID Valid?");
@@ -88,9 +88,9 @@ function startApp() {
 					const getFriends = require(path.join(utilsPath, 'getfriends.js'));
 					getFriends(userid)
 						.then(() => {
-							setTimeout(function() {
-								rl.close();
-							}, 6000);
+							rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+								startApp();
+							});
 						})
 						.catch((err) => {
 							console.error("Unexpected Error Occured. Is the User ID Valid?");
@@ -100,49 +100,49 @@ function startApp() {
 				break;
 			case '4':
 				const response = "Successfully Declined All Requests"
-				noblox.declineAllFriendRequests().then(() => {
-                    setTimeout(function() {
-                        rl.close();
-                    }, 6000);
-                })
-                console.log(chalk.green(response))
+				noblox.declineAllFriendRequests()
+				console.log(chalk.green(response)).then(() => {
+						rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+							startApp();
+						});
+					})
 					.catch((err) => {
 						console.error("Couldn't Complete Request. No Friend Requests To Decline?");
 						rl.close();
 					})
-                break;
-            case '5':
-                let question4 = 'Enter ID: '
+				break;
+			case '5':
+				let question4 = 'Enter ID: '
 				rl.question(chalk.gray(question4), (userid) => {
 					const getOutfits = require(path.join(utilsPath, 'getoutfits.js'));
 					getOutfits(userid)
 						.then(() => {
-							setTimeout(function() {
-								rl.close();
-							}, 6000);
+							rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+								startApp();
+							});
 						})
 						.catch((err) => {
 							console.error("Unexpected Error Occured. Is the User ID Valid?");
 							rl.close();
 						})
 				})
-                break;
-            case '6':
-                let question5 = 'Enter Outfit ID: '
+				break;
+			case '6':
+				let question5 = 'Enter Outfit ID: '
 				rl.question(chalk.gray(question5), (outfitid) => {
 					const getOutfitDetails = require(path.join(utilsPath, 'outfitdetails.js'));
 					getOutfitDetails(outfitid)
 						.then(() => {
-							setTimeout(function() {
-								rl.close();
-							}, 6000);
+							rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+								startApp();
+							});
 						})
 						.catch((err) => {
 							console.error("Unexpected Error Occured. Is the User ID Valid?");
 							rl.close();
 						})
 				})
-                break;
+				break;
 		}
 	});
 }
