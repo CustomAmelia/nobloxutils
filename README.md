@@ -16,6 +16,7 @@ A sleak, easy to use small example of what is possible using the NoBlox module.
 - Get Product Image
 ## Installation
 
+Install Git
 In CMD Prompt
 ```bash
   git clone https://github.com/CustomAmelia/nobloxutils.git
