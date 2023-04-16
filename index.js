@@ -102,12 +102,12 @@ function startApp() {
 				break;
 			case '4':
 				const response = "Successfully Declined All Requests"
-				noblox.declineAllFriendRequests()
-				console.log(chalk.green(response)).then(() => {
-						rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
-							startApp();
-						});
-					})
+				console.log(chalk.green(response))
+				noblox.declineAllFriendRequests().then(() => {
+					rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+						startApp();
+					});
+				})
 					.catch((err) => {
 						console.error("Couldn't Complete Request. No Friend Requests To Decline?");
 						rl.close();
