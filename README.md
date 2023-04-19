@@ -16,6 +16,8 @@ A sleak, easy to use small example of what is possible using the NoBlox module.
 - Get Product Image
 ## Installation
 
+Install Git
+
 In CMD Prompt
 ```bash
   git clone https://github.com/CustomAmelia/nobloxutils.git
@@ -41,7 +43,7 @@ Beginner Node.JS JavaScript Developer
 
 
 ## 🔗 Links
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/videotapings)
 
 
 ## 🛠 Skills
