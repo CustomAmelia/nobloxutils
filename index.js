@@ -41,6 +41,8 @@ function startApp() {
 	console.log(chalk.green(getOutfitdetails));
 	const productimage = "7. Get Product Image"
 	console.log(chalk.green(productimage));
+	const buyItem = "8. Buy Item"
+	console.log(chalk.green(buyItem));
 
 	const action = 'Enter the number of the action you want to perform: '
 	rl.question(chalk.gray(action), (answer) => {
@@ -150,6 +152,22 @@ function startApp() {
 				rl.question(chalk.gray(question6), (productid) => {
 					const getProductImage = require(path.join(utilsPath, 'productimage.js'));
 					getProductImage(productid)
+					.then(() => {
+						rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
+							startApp();
+						})
+					})
+					.catch((err) => {
+						console.error('Unexpected Error Occured. Is the Product ID Valid?')
+						rl.close();
+					})
+				})
+				break;
+			case '8':
+				let question7 = 'Enter Product ID: '
+				rl.question(chalk.gray(question7), (productid) => {
+					const buyItem = require(path.join(utilsPath, 'buyitem.js'));
+					buyItem(productid)
 					.then(() => {
 						rl.question(chalk.gray('Press Enter to go back to the menu.'), () => {
 							startApp();
